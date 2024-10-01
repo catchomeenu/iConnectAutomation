@@ -4,6 +4,7 @@ import iConnectAutomation.base.Base;
 import iConnectAutomation.pageObjects.HomePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -63,6 +64,70 @@ public class FooterPageStepDefinitions extends HomePage {
         return false;
 
     }
+
+    //sakthi
+
+    @When("user click on the pricing link")
+    public void user_click_on_the_pricing_link() {
+        try {
+            user_ClickPricing();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @And("user should be able to navigate the pricing page")
+    public void user_should_be_able_to_navigate_the_pricing_page() {
+        try {
+            verify_Pricingpage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("user should be verify the Pricing text present")
+    public void user_should_be_verify_the_pricing_text_present() {
+        try {
+            verify_PricingText();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+    }
+
+    @When("user click on the Capabilities link")
+    public void user_click_on_the_capabilities_link() {
+        try {
+            user_ClickCapabilities();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @And("user should be able to navigate the Capabilities page")
+    public void user_should_be_able_to_navigate_the_capabilities_page() {
+        try {
+            verify_Capabilitiespage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("user should be verify the text present")
+    public void user_should_be_verify_the_text_present() {
+        try {
+            verify_CapabilitiesText();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+
 
 
 }

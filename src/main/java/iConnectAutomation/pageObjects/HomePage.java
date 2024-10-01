@@ -10,10 +10,15 @@ public class HomePage extends Base {
     public static By privacyPolicyText = By.xpath("//h1[@class='text-white mb-1' and text()='Privacy Policy']");
     public static By termsOfUseLink = By.xpath("//a[@class='text-white' and normalize-space()='Terms of use']");
     public static By termsOfUseText = By.xpath("//h1[@class='text-white mb-1' and text()='Terms of Services']");
-    public static By homePageIcon = By.xpath("//li[@class='breadcrumb-item']/a/i[@class='fa fa-home pr-1']");
+    public static By homeLink = By.xpath("//a[@class='nav-link' and text()='Home']");
     public static By pricingLink = By.xpath("//a[@class='nav-link' and text()='Pricing']");
     public static By pricingText = By.xpath("//h1[@class='text-white mb-1' and text()='Pricing']");
     public static By homePageText=By.xpath("//span[@class='badge badge-primary badge-primary-soft mb-4']");
+    //sakthi
+    public static By clickPricinglink=  By.linkText("Pricing");
+    public static By verifyPricingText=By.xpath("//h1[@class='text-white mb-1']");
+    public static By clickCapabilitieslink=By.linkText("Capabilities");
+    public static By verifyCapabilitiesText=  By.xpath("//h1[@class='font-weight-normal text-white text-center']");
 //Ramya Methods
    public static void browserLaunchSetup() {
         try
@@ -106,9 +111,9 @@ public class HomePage extends Base {
 
 
 
-    public static void clickHomePageIcon() {
+    public static void clickBacktoHome() {
         try {
-            driver.get().findElement(homePageIcon).click();
+            driver.get().findElement(homeLink).click();
             //  System.out.println("Navigated to HomePage");
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -136,7 +141,7 @@ public class HomePage extends Base {
     public static void browserCloseSetup()
     { try
     {
-        clickHomePageIcon();
+        clickBacktoHome();
         verifyHomePageTextPresence();
         quitDriver();
 
@@ -145,5 +150,80 @@ public class HomePage extends Base {
     }
 
     }
+
+    //sakthi
+    public static void user_ClickPricing() {
+        try {
+            driver.get().findElement(clickPricinglink).click();
+            System.out.println("Pricing link Clicked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void verify_Pricingpage() {
+        try {
+            implicitWait(30);
+            String URL = driver.get().getCurrentUrl();
+            SoftAssert sa=new SoftAssert();
+            sa.assertEquals(URL, "https://dev.infyniconnect.com/enterprise_users/connect_pricing/");
+            System.out.println("Pricing page displayed");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void verify_PricingText() {
+        try {
+            String actualText = driver.get().findElement(verifyPricingText).getText();
+            String expectedText = "Pricing";
+            SoftAssert sa=new SoftAssert();
+            sa.assertEquals(actualText, expectedText);
+            System.out.println("Verified the Pricing text");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+    public static void user_ClickCapabilities() {
+        try {
+            driver.get().findElement(clickCapabilitieslink).click();
+            System.out.println("Capabilities link Clicked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void verify_Capabilitiespage() {
+        try {
+            implicitWait(30);
+            String URL = driver.get().getCurrentUrl();
+            SoftAssert sa=new SoftAssert();
+            sa.assertEquals(URL, "https://dev.infyniconnect.com/enterprise_users/connect_capabilities/");
+            System.out.println("Capabilities page displayed");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void verify_CapabilitiesText() {
+        try {
+            String actualText = driver.get().findElement(verifyCapabilitiesText).getText();
+            String expectedText = "Unlock Your Potential with Our Expert Staffing Solutions";
+
+            SoftAssert sa=new SoftAssert();
+            sa.assertEquals(actualText, expectedText);
+            System.out.println("Verified the text for capabilities");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+
+
 
 }
