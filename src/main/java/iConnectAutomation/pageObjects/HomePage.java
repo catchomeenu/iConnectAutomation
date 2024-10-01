@@ -2,7 +2,11 @@ package iConnectAutomation.pageObjects;
 
 import iConnectAutomation.base.Base;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
+
+import java.util.Iterator;
+import java.util.Set;
 
 public class HomePage extends Base {
 //Ramya Links
@@ -19,7 +23,14 @@ public class HomePage extends Base {
     public static By verifyPricingText=By.xpath("//h1[@class='text-white mb-1']");
     public static By clickCapabilitieslink=By.linkText("Capabilities");
     public static By verifyCapabilitiesText=  By.xpath("//h1[@class='font-weight-normal text-white text-center']");
-//Ramya Methods
+    //Swathini
+    public static By click_contactUs = By.linkText("Contact Us");
+    public static By validatethe_contactus =By.xpath ("//h1[contains(text(),'Contact Us')]");
+    public static By home=By.linkText("Home");
+    public static By click_blog=By.linkText("Blog");
+    public static By validate_blog=By.xpath("//h1[contains(text(),'Blog has been removed')]");
+
+    //Ramya Methods
    public static void browserLaunchSetup() {
         try
         {
@@ -224,6 +235,62 @@ public class HomePage extends Base {
         }
     }
 
+   //swathini's Methods
+
+    public void userclicks_thecontactuslink()
+    {
+
+        driver.get().findElement(click_contactUs).click();
+    }
+
+    public boolean validatethe_contactustextpresence()
+    {
+
+        boolean value= false;
+        try {
+            WebElement actual= driver.get().findElement(validatethe_contactus);
+            value = actual.isDisplayed();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return value;
+
+    }
+
+    public void userclicks_bloglink() {
+        driver.get().findElement(click_blog).click();
+        //throw new io.cucumber.java.PendingException();
+    }
+
+    public void validatetheblog_text_presence() {
+        String parentWindow = driver.get().getWindowHandle();
+
+        Set<String> windows = driver.get().getWindowHandles();
+
+        Iterator<String> itr = windows.iterator();
+
+        while (itr.hasNext()) {
+            String child = itr.next();
+
+            if (!(child.equals(parentWindow))) {
+                driver.get().switchTo().window(child);
+
+                WebElement actual = driver.get().findElement(validate_blog);
+
+                boolean value1 = actual.isDisplayed();
+                boolean expected = true;
+                SoftAssert sa = new SoftAssert();
+                sa.assertEquals(value1, expected);
+                sa.assertAll();
+                driver.get().close();
+                driver.get().switchTo().window(parentWindow);
+
+            }
+
+        }
+
+
+    }
 
 
 }

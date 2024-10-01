@@ -127,7 +127,36 @@ public class FooterPageStepDefinitions extends HomePage {
 
         }
     }
+//Swathini's Methods
 
+    @When("User clicks the contactus link")
+    public void user_clicks_the_contactus_link()
+    {
+        userclicks_thecontactuslink();
+
+    }
+    @And("User validate the contactus text presence")
+    public void user_validate_the_contactus_text_presence() {
+
+        boolean Acutval=validatethe_contactustextpresence();
+        boolean expected = true;
+        SoftAssert sa = new SoftAssert();
+        sa.assertEquals(Acutval, expected);
+        sa.assertAll();
+
+        //throw new io.cucumber.java.PendingException();
+    }
+
+    @When("User clicks the Blog link")
+    public void user_clicks_the_blog_link() {
+
+        userclicks_bloglink();
+    }
+
+    @And("User validate the Blog text presence and close the newtab")
+    public void user_validate_the_blog_text_presence_and_close_the_newtab() {
+        validatetheblog_text_presence();
+    }
 
 
 }
