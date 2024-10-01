@@ -9,7 +9,7 @@ public class PropertyReader {
     public synchronized static String readDataFromPropertyFile(String Key) throws FileNotFoundException
     {
 
-        FileInputStream fs=new FileInputStream("C:\\Users\\srini\\IConnectAutomation\\iConnectAutomation\\appconfig.properties");
+        FileInputStream fs=new FileInputStream("C:\\Users\\SWA\\Git Repository\\iConnectAutomation\\appconfig.properties");
         Properties prop = new Properties();
         try {
             prop.load(fs);
