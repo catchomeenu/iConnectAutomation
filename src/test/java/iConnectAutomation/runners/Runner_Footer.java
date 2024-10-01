@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
-@CucumberOptions(features= {"C://Users//ramya//IdeaProjects//Ramya_Infyni_iConnectAutomation//Features//Footer.feature"},
+@CucumberOptions(features= {"Features"},
         glue= {"stepdefinitions","hooks"},
         plugin={"pretty","html:target/htmlreport.html"},
         tags= "@FooterLinks",
