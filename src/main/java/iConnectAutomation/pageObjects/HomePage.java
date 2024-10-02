@@ -29,6 +29,134 @@ public class HomePage extends Base {
     public static By home=By.linkText("Home");
     public static By click_blog=By.linkText("Blog");
     public static By validate_blog=By.xpath("//h1[contains(text(),'Blog has been removed')]");
+    //Asha
+    public static By solutions = By.xpath("//a[@class='nav-link' and text()='Solutions']");
+    public static By contactus = By.xpath("//a[@class='nav-link' and text()='Contact Us']");
+    public static By InfyLogo = By.xpath("//img[@alt='infyni']");
+    //Navigation of Solution page and Contactus page
+    public static By solutionsPage = By.xpath("//div/h1[@class='text-white mb-1' and text()='Solutions']");
+    public static By contactUSPage = By.xpath("//div/h1[@class='text-white mb-1' and text()='Contact Us']");
+    public static By backtoHomepagelink = By.xpath("//li[@class='breadcrumb-item']");
+    //Asha Methods
+    public static void solutionslink() {
+        try {
+            driver.get().findElement(solutions).click();
+            System.out.println("Solutions Link is clicked ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void solutionsDisplay() {
+        try {
+            driver.get().findElement(solutions).isDisplayed();
+            System.out.println("Solutions Link is Displayed ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public static void contactUsLink() {
+        try {
+            driver.get().findElement(contactus).click();
+            System.out.println("ContactUS  is clicked ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void ContactUSDisplay() {
+        try {
+            driver.get().findElement(contactus).isDisplayed();
+            System.out.println("ContactUS  is Displayed ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    //back to home page from solution page and contactUs page of header section
+    public static void navigateBackToHome() {
+        String mainWindow = driver.get().getWindowHandle();
+        Set<String> windows = driver.get().getWindowHandles();
+        Iterator<String> itr = windows.iterator();
+        while (itr.hasNext()) {
+            String childWindow = itr.next();
+            if (!childWindow.equals(mainWindow)) {
+                try {
+                    driver.get().switchTo().window(childWindow);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                // Get the title of the child window's page
+                String windowTitle = driver.get().getTitle();
+                if (windowTitle.contains("Expected Title")) {
+                    driver.get().close();
+                    driver.get().switchTo().window(mainWindow);
+                    return;
+                }
+            }
+        }
+    }
+
+    public static void backToHomePage() {
+        try {
+            driver.get().findElement(backtoHomepagelink).click();
+            System.out.println("Back to home link  is clicked ");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean solutionTextPresence() {
+
+        try {
+            driver.get().findElement(solutionsPage).isDisplayed();
+            System.out.println("We are on solutions Page ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean contactUSTextPresence() {
+        try {
+            driver.get().findElement(contactUSPage).isDisplayed();
+            System.out.println("We are on ContactUS Page ");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void solutionsLinkVerify() {
+
+        System.out.println("Navigated to Solutions page when clicked Header Section");
+        SoftAssert softAssert = new SoftAssert();
+        boolean actualResult = solutionTextPresence();
+        boolean expectedResult = true;
+        softAssert.assertEquals(actualResult, expectedResult);
+        System.out.println("Solution Text verified");
+    }
+
+    public static void contactUsLinkVerify() {
+
+        System.out.println("Navigated to ContactUS page when clicked on Header Section");
+        SoftAssert softAssert = new SoftAssert();
+        boolean actualResult = contactUSTextPresence();
+        boolean expectedResult = true;
+        softAssert.assertEquals(actualResult, expectedResult);
+        System.out.println("Contact Us Text verified");
+    }
+
 
     //Ramya Methods
    public static void browserLaunchSetup() {
