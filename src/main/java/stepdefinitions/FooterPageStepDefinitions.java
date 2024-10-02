@@ -130,15 +130,15 @@ public class FooterPageStepDefinitions extends HomePage {
 //Swathini's Methods
 
     @When("User clicks the contactus link")
-    public void user_clicks_the_contactus_link()
-    {
+    public void user_clicks_the_contactus_link() {
         userclicks_thecontactuslink();
 
     }
+
     @And("User validate the contactus text presence")
     public void user_validate_the_contactus_text_presence() {
 
-        boolean Acutval=validatethe_contactustextpresence();
+        boolean Acutval = validatethe_contactustextpresence();
         boolean expected = true;
         SoftAssert sa = new SoftAssert();
         sa.assertEquals(Acutval, expected);
@@ -158,5 +158,56 @@ public class FooterPageStepDefinitions extends HomePage {
         validatetheblog_text_presence();
     }
 
+//Priya's Methods
+
+    @When("user click on the home link")
+    public void user_click_on_the_home_link() {
+        try {
+            ClickHome_link();
+            System.out.println("Home link clicked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("user should verify the text present")
+    public boolean user_should_verify_the_text_present() {
+        try {
+            Verify_Keyfeature_text();
+            System.out.println("Key Features text is verified");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    @When("user click on the AboutUs Link")
+    public void user_click_on_the_about_us_link() {
+        try {
+            ClickAboutUs_link();
+            System.out.println("About Us Link clicked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @And("user should be able to verify the text present")
+    public boolean user_should_be_able_to_verify_the_text_present() {
+        try {
+            VerifyAboutUs_linkText();
+            System.out.println("About Us text is present");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 }
+
+
+
+
