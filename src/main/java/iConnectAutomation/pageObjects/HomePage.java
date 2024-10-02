@@ -37,6 +37,16 @@ public class HomePage extends Base {
     public static By solutionsPage = By.xpath("//div/h1[@class='text-white mb-1' and text()='Solutions']");
     public static By contactUSPage = By.xpath("//div/h1[@class='text-white mb-1' and text()='Contact Us']");
     public static By backtoHomepagelink = By.xpath("//li[@class='breadcrumb-item']");
+
+
+    //Priya
+    public static By Home_link = By.xpath("//a[@class='text-white' and text()='Home']");
+    public static By Keyfeature_text = By.xpath("//h2[text()='Key Features ']/following-sibling::p[1]");
+    public static By AboutUs_link = By.xpath("//a[@class='text-white' and text()='About Us']]");
+    public static By AboutUs_linkText = By.xpath("//h1[@class='text-white mb-1' and text()='About Us']]");
+
+
+
     //Asha Methods
     public static void solutionslink() {
         try {
@@ -420,5 +430,56 @@ public class HomePage extends Base {
 
     }
 
+//Priya's Methods
 
+    public static void ClickHome_link() {
+        try {
+            driver.get().findElement(Home_link).click();
+            //System.out.println("Home link clicked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static boolean Verify_Keyfeature_text() {
+        try {
+            boolean actualresult = driver.get().findElement(Keyfeature_text).isDisplayed();
+            boolean expectedresult = true;
+            SoftAssert sa = new SoftAssert();
+            sa.assertEquals(actualresult, expectedresult);
+            //System.out.println("Key Features Text is Verified");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public static void ClickAboutUs_link() {
+        try {
+            driver.get().findElement(AboutUs_link).click();
+            //System.out.println("Clicked about us link");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean VerifyAboutUs_linkText() {
+        try {
+            boolean actualresult = driver.get().findElement(AboutUs_linkText).isDisplayed();
+            boolean expectedresult = true;
+            SoftAssert sa = new SoftAssert();
+            sa.assertEquals(actualresult, expectedresult);
+            //System.out.println("About Us text verified");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
+
+
+
+
+

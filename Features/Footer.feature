@@ -40,6 +40,18 @@ Feature: This Feature runs for Checking infyniConnect HomePage Footer Links Func
     When User clicks the Blog link
     And User validate the Blog text presence and close the newtab
 
+  @FooterHome,@FooterLinks
+  Scenario: Verification of Home link functionality
+
+    When user click on the home link
+    And user should verify the text present
+
+
+  @FooterAboutUs,@FooterLinks
+  Scenario: Verification of AboutUs link functionality
+
+    When user click on the AboutUs Link
+    And user should be able to verify the text present
 
 
 
