@@ -54,6 +54,12 @@ Feature: This Feature runs for Checking infyniConnect HomePage Footer Links Func
     And user should be able to verify the text present
 
 
+  @FooterLocations,@FooterLinks
+  Scenario: Verification of the various office locations of Infyni
+    When The user scrolls down to the bottom
+    Then USA office address should be displayed as "USA: 26211 Central Park Blvd, Southfield, MI 48076, United States"
+    And Karnataka office address should be displayed as "India: 1589/B 3rd Floor, Aashvi complex, 100 Feet Ring Rd, Kadarenahalli Park, Banashankari Stage II, Banashankari, Bengaluru, Karnataka 560070"
+    And Haryana office address should be displayed as "India: #701, 7th Floor, Eros City Square, Sector 49, Gurgaon, Haryana, 122018"
 
 
 

@@ -2,6 +2,7 @@ package iConnectAutomation.pageObjects;
 
 import iConnectAutomation.base.Base;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
@@ -45,7 +46,10 @@ public class HomePage extends Base {
     public static By AboutUs_link = By.xpath("//a[@class='text-white' and text()='About Us']]");
     public static By AboutUs_linkText = By.xpath("//h1[@class='text-white mb-1' and text()='About Us']]");
 
-
+    //Sowmya
+    public static By labelAddrUSA = By.xpath("//a[@class='text-white'][contains(.,'United States')]");
+    public static By labelAddrKarnataka = By.xpath("//a[@class='text-white'][contains(.,'Karnataka')]");
+    public static By labelAddrHaryana = By.xpath("//a[@class='text-white'][contains(.,'Haryana')]");
 
     //Asha Methods
     public static void solutionslink() {
@@ -477,6 +481,33 @@ public class HomePage extends Base {
         }
         return false;
     }
+
+    //Sowmya's methods
+    public static void scroll_to_the_bottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver.get();
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+    }
+
+    public static boolean verify_USA_ofc_address_Presence() {
+        return  driver.get().findElement(labelAddrUSA).isDisplayed();
+    }
+
+    public static String get_USA_ofc_address_Text() {
+        return  driver.get().findElement(labelAddrUSA).getText();
+    }
+    public static boolean verify_Karnataka_ofc_address_Presence() {
+        return  driver.get().findElement(labelAddrKarnataka).isDisplayed();
+    }
+    public static String get_Karnataka_ofc_address_Text() {
+        return  driver.get().findElement(labelAddrKarnataka).getText();
+    }
+    public static boolean verify_Haryana_ofc_address_Presence() {
+        return  driver.get().findElement(labelAddrHaryana).isDisplayed();
+    }
+    public static String get_Haryana_ofc_address_Text() {
+        return  driver.get().findElement(labelAddrHaryana).getText();
+    }
+
 }
 
 

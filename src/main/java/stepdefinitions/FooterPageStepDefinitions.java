@@ -193,6 +193,29 @@ public class FooterPageStepDefinitions extends HomePage {
 
     }
 
+    // Sowmya's methods
+    @When("The user scrolls down to the bottom")
+    public void the_user_scrolls_down_to_the_bottom() {
+        scroll_to_the_bottom();
+    }
+    @Then("USA office address should be displayed as {string}")
+    public void usa_office_address_should_be_displayed(String expectedAddress) {
+        SoftAssert sa = new SoftAssert();
+        sa.assertTrue(verify_USA_ofc_address_Presence());
+        sa.assertEquals(get_USA_ofc_address_Text(), expectedAddress);
+    }
+    @And("Karnataka office address should be displayed as {string}")
+    public void karnataka_office_address_should_be_displayed_as(String expectedAddress) {
+        SoftAssert sa = new SoftAssert();
+        sa.assertTrue(verify_Karnataka_ofc_address_Presence());
+        sa.assertEquals(get_Karnataka_ofc_address_Text(), expectedAddress);
+    }
+    @And("Haryana office address should be displayed as {string}")
+    public void haryana_office_address_should_be_displayed_as(String expectedAddress) {
+        SoftAssert sa = new SoftAssert();
+        sa.assertTrue(verify_Haryana_ofc_address_Presence());
+        sa.assertEquals(get_Haryana_ofc_address_Text(), expectedAddress);
+    }
 
     @And("user should be able to verify the text present")
     public boolean user_should_be_able_to_verify_the_text_present() {
