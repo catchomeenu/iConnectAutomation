@@ -62,4 +62,16 @@ Feature: This Feature runs for Checking infyniConnect HomePage Footer Links Func
     And Haryana office address should be displayed as "India: #701, 7th Floor, Eros City Square, Sector 49, Gurgaon, Haryana, 122018"
 
 
+  @FooterLocations,@FooterLinks
+  Scenario: Verification of Mobile Number of InfyniConnect
+    When The user checks for mobile number
+    Then mobile number displayed as "+91-1234567890"
+
+
+  @FooterLocations,@FooterLinks
+  Scenario: Verification of email id of InfyniConnect
+    When The user checks for email id
+    Then email id number displayed as "contact@infyni.com"
+
+
 

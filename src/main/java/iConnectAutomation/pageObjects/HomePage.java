@@ -51,6 +51,14 @@ public class HomePage extends Base {
     public static By labelAddrKarnataka = By.xpath("//a[@class='text-white'][contains(.,'Karnataka')]");
     public static By labelAddrHaryana = By.xpath("//a[@class='text-white'][contains(.,'Haryana')]");
 
+    //Vimala
+    public static By labelPhoneNo = By.xpath("//a[@class='text-white'][contains(.,'+91')]");
+    public static By labelContactNo = By.xpath("//a[@class='text-white'][contains(.,'@')]");
+
+
+
+
+
     //Asha Methods
     public static void solutionslink() {
         try {
@@ -506,6 +514,16 @@ public class HomePage extends Base {
     }
     public static String get_Haryana_ofc_address_Text() {
         return  driver.get().findElement(labelAddrHaryana).getText();
+    }
+
+    //Vimala's methods
+
+    public static String get_InfyniConnect_Mobile_No() {
+        return  driver.get().findElement(labelPhoneNo).getText();
+    }
+
+    public static String get_InfyniConnect_email_Id() {
+        return  driver.get().findElement(labelContactNo).getText();
     }
 
 }

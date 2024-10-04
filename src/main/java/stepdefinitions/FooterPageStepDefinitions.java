@@ -228,7 +228,29 @@ public class FooterPageStepDefinitions extends HomePage {
         return false;
     }
 
+    //Vimala's Methods
+    @When("The user checks for mobile number")
+    public void theUserChecksForMobileNumber() {
+        scroll_to_the_bottom();
+    }
 
+    @Then("mobile number displayed as {string}")
+    public void mobileNumberDisplayedAs(String expectedMobileNo) {
+        SoftAssert sa = new SoftAssert();
+        sa.assertEquals(get_InfyniConnect_Mobile_No(), expectedMobileNo);
+    }
+
+
+    @When("The user checks for email id")
+    public void theUserChecksForEmailId() {
+        scroll_to_the_bottom();
+    }
+
+    @Then("email id number displayed as {string}")
+    public void emailIdNumberDisplayedAs(String expectedemailid) {
+        SoftAssert sa = new SoftAssert();
+        sa.assertEquals(get_InfyniConnect_email_Id(), expectedemailid);
+    }
 }
 
 
